@@ -1,17 +1,17 @@
 module Api::V1
-  class SectionsController < ApiController
+  class StudentsController < ApiController
 
-    before_action :set_section, only: [:show, :update, :destroy]
+    before_action :set_student, only: [:show, :update, :destroy]
 
     # GET /sections
     def index
-      @sections = Section.all
-      json_response(@sections)
+      @students = Student.all
+      json_response(@students)
     end
 
     # POST /section
     def create
-      @obj = Section.create!(section_params)
+      @obj = Student.create!(student_params)
       json_response(@obj, :created)
     end
 
@@ -22,7 +22,7 @@ module Api::V1
 
     # PUT /sections/:id
     def update
-      @obj.update(section_params)
+      @obj.update(student_params)
       head :no_content
     end
 
@@ -34,13 +34,13 @@ module Api::V1
 
     private
 
-    def section_params
+    def student_params
       # whitelist params
-      params.permit(:name, :school_year)
+      params.permit(:student_number, :first_name, :middle_initial, :last_name, :section_id)
     end
 
-    def set_section
-      @obj = Section.find(params[:id])
+    def set_student
+      @obj = Student.find(params[:id])
     end
 
   end

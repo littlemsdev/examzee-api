@@ -5,15 +5,16 @@ class CreateExamzeeTable < ActiveRecord::Migration[5.0]
       t.string :username
       t.string :password, null: false, default: ""
       t.string :full_name
+      t.text :section_ids, array: true, default: []
     end
 
     create_table :sections do |t|
       t.string :name
-      t.text :user_ids, array: true, default: []
       t.string :school_year
     end
 
     create_table :students do |t|
+      t.integer :student_number
       t.string :first_name
       t.string :middle_initial
       t.string :last_name
@@ -34,6 +35,7 @@ class CreateExamzeeTable < ActiveRecord::Migration[5.0]
       t.integer :student_name
       t.integer :exam_id
       t.text :answer_keys, array: true, default: []
+      t.string :score
       t.integer :status
     end
 
