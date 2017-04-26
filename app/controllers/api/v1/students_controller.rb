@@ -5,7 +5,7 @@ module Api::V1
 
     # GET /sections
     def index
-      @students = Student.all
+      @students = Student.where(section_id: params[id]).all.order("id ASC");
       json_response(@students)
     end
 
