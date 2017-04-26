@@ -22,7 +22,16 @@ module Api::V1
 
     # PUT /student_grades/:id
     def update
-      @obj.update(student_grade_params)
+      @get_exam_ans = Exam.select("id, answer_keys").last
+
+      @x = @obj.answer_keys
+      @y = @get_exam_ans.answer_keys
+
+      @count_correct = @x & @y
+      @updated_score = @count_correct.length
+
+      @obj.update_attributes({score: @updated_score})
+
       head :no_content
     end
 
@@ -31,6 +40,7 @@ module Api::V1
       @obj.destroy
       head :no_content
     end
+
 
     private
 

@@ -6,7 +6,11 @@ Rails.application.routes.draw do
       resources :sections
       resources :students
       resources :exams
-      resources :student_grades
+      resources :student_grades do
+        collection do
+          get 'exam_checker'
+        end
+      end
       resources :sessions
     end
   end
