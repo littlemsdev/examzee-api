@@ -5,7 +5,7 @@ module Api::V1
 
     # GET /student_grades
     def index
-      @student_grades = StudentGrade.all
+      @student_grades = StudentGrade.where(student_number: params[:id]).all.order("exam_id ASC");
       json_response(@student_grades)
     end
 
