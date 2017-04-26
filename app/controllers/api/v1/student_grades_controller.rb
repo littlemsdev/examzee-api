@@ -36,7 +36,7 @@ module Api::V1
 
     def student_grade_params
       # whitelist params
-      params.permit(:student_id, :student_name, :exam_id, :answer_keys, :score, :status)
+      params.permit(:student_id, :student_number, :exam_id, :answer_keys, :score, :status)
     end
 
     def set_student_grade
