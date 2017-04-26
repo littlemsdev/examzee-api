@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       resources :students
       resources :exams
       resources :student_grades
+      resources :sessions
     end
   end
 
