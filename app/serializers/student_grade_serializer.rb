@@ -1,5 +1,5 @@
 class StudentGradeSerializer < ActiveModel::Serializer
-  attributes :id, :student_id, :student_number, :exam_id, :answer_keys, :status
+  attributes :id, :student_id, :student_number, :exam_id, :answer_keys, :status, :exam_name
 
   def status_grade
     case object.status
@@ -8,6 +8,10 @@ class StudentGradeSerializer < ActiveModel::Serializer
     when 2
       "Failed"
     end
+  end
+
+  def exam_name
+    object.exam.exam_name
   end
 
 end
