@@ -1,5 +1,5 @@
 class StudentGradeSerializer < ActiveModel::Serializer
-  attributes :id, :student_id, :student_number, :exam_id, :answer_keys, :status, :exam_name, :status_grade
+  attributes :id, :student_id, :student_number, :exam_id, :answer_keys, :score, :status, :exam_name, :status_grade
 
   def status_grade
     case object.status
